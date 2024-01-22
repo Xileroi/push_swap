@@ -3,20 +3,6 @@
 #include <stdlib.h>
 #include "push_swap.h"
 
-/*int main(void);
-{
-    int i;
-
-    i = 0;
-    while (str[i])
-        i++;
-    if (i <= 5)
-		sort_small_stack();
-	else
-		sort_big_stack();
-}
-*/
-
 /*
 1 -> 5
 
@@ -125,23 +111,3 @@ int main()
     print_stack(&stack);
     free_stack(&stack);
 }
-
-/*int sa(char *str)
-{
-    int i = 0;
-    char    *c;
-
-    c = malloc(sizeof(char) * 2);
-    
-    while (str[i])
-        i++;
-    if (i <= 0)
-        return (i);
-    c[0] = str[1];
-    printf("%c", c[0]);
-    str[0] = str[1];
-    printf("%c", str[0]);
-    str[1] = c[0];
-    printf("%c", str[1]);
-    return (0);
-}*/
