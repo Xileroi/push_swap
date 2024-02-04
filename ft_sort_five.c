@@ -6,7 +6,7 @@
 /*   By: yalounic <yalounic@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/04 16:36:13 by yalounic          #+#    #+#             */
-/*   Updated: 2024/02/04 17:34:26 by yalounic         ###   ########.fr       */
+/*   Updated: 2024/02/04 17:47:12 by yalounic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 void	ft_sort_five(t_stack *stack)
 {
-    ft_pb(stack);
-    ft_pb(stack);
+	ft_pb(stack);
+	ft_pb(stack);
 	if (stack->pile_b->valeur > stack->pile_b->next->valeur)
 		ft_sb(stack, 0);
 	ft_sort_small(stack);
@@ -34,5 +34,5 @@ void	ft_sort_five(t_stack *stack)
 		ft_sa(stack, 0);
 		ft_pa(stack);
 	}
-    return ;
+	return ;
 }
