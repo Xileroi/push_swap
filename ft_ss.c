@@ -1,27 +1,50 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_a.c                                             :+:      :+:    :+:   */
+/*   ft_ss.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yalounic <yalounic@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/25 18:35:36 by yalounic          #+#    #+#             */
-/*   Updated: 2024/01/25 18:36:59 by yalounic         ###   ########.fr       */
+/*   Updated: 2024/02/01 16:28:47 by yalounic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	ft_sa(t_pile **stack)
+void	ft_sa(t_stack *stack, int i)
 {
 	int		tmp_valeur;
 	t_pile	*tmp;
 
-	if (*stack == NULL || (*stack)->next == NULL)
+	if (stack->pile_a == NULL)
 		return ;
-	tmp = *stack;
+	tmp = stack->pile_a;
 	tmp_valeur = tmp->valeur;
 	tmp->valeur = tmp->next->valeur;
 	tmp->next->valeur = tmp_valeur;
-	printf("sa\n");
+	if (i == 0)
+		printf("sa\n");
+}
+
+void	ft_sb(t_stack *stack, int i)
+{
+	int		tmp_valeur;
+	t_pile	*tmp;
+
+	if (stack->pile_b == NULL)
+		return ;
+	tmp = stack->pile_b;
+	tmp_valeur = tmp->valeur;
+	tmp->valeur = tmp->next->valeur;
+	tmp->next->valeur = tmp_valeur;
+	if (i == 0)
+		printf("sb\n");
+}
+
+void	ft_ss(t_stack *stack)
+{
+	ft_sa(stack, 1);
+	ft_sb(stack, 1);
+	printf("ss\n");
 }

@@ -6,7 +6,7 @@
 /*   By: yalounic <yalounic@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/25 17:03:11 by yalounic          #+#    #+#             */
-/*   Updated: 2024/01/25 18:51:18 by yalounic         ###   ########.fr       */
+/*   Updated: 2024/02/04 17:35:17 by yalounic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,6 +70,7 @@ void	print_stack(t_pile **stack)
 	t_pile	*maillon;
 	t_pile	*newElement;
 	t_pile	*newelement;
+	t_pile	*newelement;
 
 	tmp = *stack;
 	while (tmp != NULL && tmp->next != NULL)
@@ -112,6 +113,27 @@ void	push(t_pile **pile, int valeur)
 	*pile = newelement;
 }
 
+void	ft_test_sort(t_stack *stack)
+{
+	int		tmp_valeur;
+	t_pile	*tmp;
+
+	if (stack->pile_a == NULL)
+		return ;
+	tmp = stack->pile_a;
+	tmp_valeur = tmp->valeur;
+	while (tmp->next != NULL)
+	{
+		if (tmp->valeur > tmp->next->valeur)
+		{
+			printf("\nKO\n");
+			return ;
+		}
+		tmp = tmp->next;
+		tmp_valeur = tmp->valeur;
+	}
+}
+
 int	main(void)
 {
 	t_stack	*stack;
@@ -124,21 +146,18 @@ int	main(void)
 		free(stack);
 		return (0);
 	}
-	push(&(stack->pile_a), 1);
-	push(&(stack->pile_a), 2);
+	push(&(stack->pile_a), 0);
+	push(&(stack->pile_a), 4);
 	push(&(stack->pile_a), 3);
-	push(&(stack->pile_b), 4);
-	push(&(stack->pile_b), 5);
-	push(&(stack->pile_b), 6);
+	push(&(stack->pile_a), 2);
+	push(&(stack->pile_a), 1);
 	printf("a\n");
 	print_stack(&(stack->pile_a));
-	printf("\nb\n");
-	print_stack(&(stack->pile_b));
-	ft_ss(stack);
+	printf("\n-----------------\n\n");
+	ft_sort_five(stack);
 	printf("\n-----------------\n\na\n");
 	print_stack(&(stack->pile_a));
-	printf("\nb\n");
-	print_stack(&(stack->pile_b));
+	ft_test_sort(stack);
 	free_stack(&(stack->pile_a));
 	free_stack(&(stack->pile_b));
 	free(stack);
