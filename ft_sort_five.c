@@ -6,7 +6,7 @@
 /*   By: yalounic <yalounic@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/04 16:36:13 by yalounic          #+#    #+#             */
-/*   Updated: 2024/02/04 17:47:12 by yalounic         ###   ########.fr       */
+/*   Updated: 2024/02/04 17:58:51 by yalounic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,17 @@ void	ft_sort_five(t_stack *stack)
 	else
 		ft_sort_small(stack);
 	ft_pa(stack);
+	print_stack(&(stack->pile_a));
 	if (stack->pile_a->valeur > stack->pile_a->next->next->next->next->valeur)
 		ft_ra(stack, 0);
+	else if (stack->pile_a->valeur > stack->pile_a->next->valeur
+		&& stack->pile_a->valeur > stack->pile_a->next->next->next->valeur)
+	{
+		ft_rra(stack, 0);
+		ft_sa(stack, 0);
+		ft_ra(stack,0);
+		ft_ra(stack,0);
+	}
 	else
 	{
 		ft_sa(stack, 0);
