@@ -6,7 +6,7 @@
 /*   By: yalounic <yalounic@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/25 17:03:11 by yalounic          #+#    #+#             */
-/*   Updated: 2024/02/04 17:59:22 by yalounic         ###   ########.fr       */
+/*   Updated: 2024/02/09 01:04:28 by yalounic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,9 +68,6 @@ void	print_stack(t_pile **stack)
 {
 	t_pile	*tmp;
 	t_pile	*maillon;
-	t_pile	*newElement;
-	t_pile	*newelement;
-	t_pile	*newelement;
 
 	tmp = *stack;
 	while (tmp != NULL && tmp->next != NULL)
@@ -100,11 +97,11 @@ t_pile	*new_pile_element(int valeur)
 	return (newelement);
 }
 
-void	push(t_pile **pile, int valeur)
+void	push(t_pile **pile, char valeur)
 {
 	t_pile	*newelement;
 
-	newelement = new_pile_element(valeur);
+	newelement = new_pile_element(valeur - 48);
 	if (newelement == NULL)
 	{
 		return ;
@@ -124,7 +121,6 @@ int	ft_test_sort(t_stack *stack)
 	{
 		if (tmp->valeur > tmp->next->valeur)
 		{
-			printf("\nKO\n");
 			return (0);
 		}
 		tmp = tmp->next;
@@ -133,34 +129,46 @@ int	ft_test_sort(t_stack *stack)
 	return (1);
 }
 
-int	main(void)
+int	main(int argc, char **argv)
 {
+	int		i = 0;
+	char	**list;
+	int		j;
 	t_stack	*stack;
 
+	if (argc <= 1)
+		return (0);
 	stack = (t_stack *)malloc(sizeof(t_stack));
-	stack->pile_a = NULL;
-	stack->pile_b = NULL;
+	list = malloc(100000 * sizeof(char *));
 	if (stack == NULL)
 	{
 		free(stack);
 		return (0);
 	}
-	push(&(stack->pile_a), 0);
-	push(&(stack->pile_a), 3);
-	push(&(stack->pile_a), 1);
-	push(&(stack->pile_a), 2);
-	push(&(stack->pile_a), 4);
+	stack->pile_a = NULL;
+	stack->pile_b = NULL;
+	list = ft_split(argv[1], ', ');
+	j = 0;
+	while (list[i])
+		i++;
+	i -= 1;
+	while (i != -1)
+	{
+		push(&(stack->pile_a), list[i][0]);
+		i--;
+	}
+	print_stack(stack);
 	if (ft_test_sort(stack) == 1)
-		return 0;
-	printf("a\n");
-	print_stack(&(stack->pile_a));
-	printf("\n-----------------\n\n");
-	ft_sort_five(stack);
-	printf("\n-----------------\n\na\n");
-	print_stack(&(stack->pile_a));
-	ft_test_sort(stack);
+		printf("Already sorted\n");
+	else
+		ft_sort_five(stack);
+	if (ft_test_sort(stack) == 0)
+	{
+		printf("Pas bon\n");
+	}
 	free_stack(&(stack->pile_a));
 	free_stack(&(stack->pile_b));
+	free(list);
 	free(stack);
 	return (0);
 }
