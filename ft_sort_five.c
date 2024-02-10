@@ -6,7 +6,7 @@
 /*   By: yalounic <yalounic@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/04 16:36:13 by yalounic          #+#    #+#             */
-/*   Updated: 2024/02/09 00:57:35 by yalounic         ###   ########.fr       */
+/*   Updated: 2024/02/10 04:56:00 by yalounic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,7 @@ static void	ft_first_check(t_stack *stack)
 		ft_rsa(stack);
 	else if (stack->pile_a->valeur > stack->pile_a->next->next->next->valeur)
 		ft_ra(stack, 0);
+	return ;
 }
 
 static void	ft_last_check(t_stack *stack)
@@ -76,17 +77,11 @@ void	ft_sort_five(t_stack *stack)
 	else
 		ft_pa(stack);
 	ft_first_check(stack);
-	if (stack->pile_b->valeur > stack->pile_a->next->next->valeur
-		&& stack->pile_b->valeur < stack->pile_a->next->next->next->valeur)
-		ft_fixthis(stack);
-	else
-		ft_pa(stack);
+	ft_pa(stack);
 	ft_last_check(stack);
-	print_stack(stack);
 	return ;
 }
 
 /*
 https://generowanie.com/fr/
-fix gcc *.c *.h -o push_swap && ./push_swap "4, 2, 5, 0, 1"
 */

@@ -6,7 +6,7 @@
 /*   By: yalounic <yalounic@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/25 17:03:11 by yalounic          #+#    #+#             */
-/*   Updated: 2024/02/09 01:04:28 by yalounic         ###   ########.fr       */
+/*   Updated: 2024/02/10 05:13:44 by yalounic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,11 +97,11 @@ t_pile	*new_pile_element(int valeur)
 	return (newelement);
 }
 
-void	push(t_pile **pile, char valeur)
+void	push(t_pile **pile, int valeur)
 {
 	t_pile	*newelement;
 
-	newelement = new_pile_element(valeur - 48);
+	newelement = new_pile_element(valeur);
 	if (newelement == NULL)
 	{
 		return ;
@@ -132,14 +132,11 @@ int	ft_test_sort(t_stack *stack)
 int	main(int argc, char **argv)
 {
 	int		i = 0;
-	char	**list;
-	int		j;
 	t_stack	*stack;
 
 	if (argc <= 1)
 		return (0);
 	stack = (t_stack *)malloc(sizeof(t_stack));
-	list = malloc(100000 * sizeof(char *));
 	if (stack == NULL)
 	{
 		free(stack);
@@ -147,28 +144,29 @@ int	main(int argc, char **argv)
 	}
 	stack->pile_a = NULL;
 	stack->pile_b = NULL;
-	list = ft_split(argv[1], ', ');
-	j = 0;
-	while (list[i])
+	while (argv[i])
 		i++;
 	i -= 1;
-	while (i != -1)
+	while (i != 0)
 	{
-		push(&(stack->pile_a), list[i][0]);
+		push(&(stack->pile_a), ft_atoi(argv[i]));
 		i--;
 	}
-	print_stack(stack);
+	//print_stack(stack);
 	if (ft_test_sort(stack) == 1)
-		printf("Already sorted\n");
+	{
+		return (0);
+		//printf("Already sorted\n");
+	}
 	else
-		ft_sort_five(stack);
-	if (ft_test_sort(stack) == 0)
+		ft_sort_small(stack);
+	/*if (ft_test_sort(stack) == 0)
 	{
 		printf("Pas bon\n");
-	}
+	}*/
+	//print_stack(stack);
 	free_stack(&(stack->pile_a));
 	free_stack(&(stack->pile_b));
-	free(list);
 	free(stack);
 	return (0);
 }

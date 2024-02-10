@@ -6,7 +6,7 @@
 /*   By: yalounic <yalounic@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/25 18:35:42 by yalounic          #+#    #+#             */
-/*   Updated: 2024/02/09 00:38:16 by yalounic         ###   ########.fr       */
+/*   Updated: 2024/02/10 04:55:19 by yalounic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ typedef struct s_pile
 
 void				ft_sb(t_stack *stack, int i);
 void				ft_sa(t_stack *stack, int i);
-void				push(t_pile **pile, char valeur);
+void				push(t_pile **pile, int valeur);
 t_pile				*new_pile_element(int valeur);
 void				print_stack(t_pile **stack);
 void				dell_value(t_pile **stack, int value);
