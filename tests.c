@@ -6,7 +6,7 @@
 /*   By: yalounic <yalounic@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/25 17:03:11 by yalounic          #+#    #+#             */
-/*   Updated: 2024/02/10 05:13:44 by yalounic         ###   ########.fr       */
+/*   Updated: 2024/02/11 18:36:21 by yalounic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -153,20 +153,36 @@ int	main(int argc, char **argv)
 		i--;
 	}
 	//print_stack(stack);
+	//ft_find_firstnum(stack, 1);
 	if (ft_test_sort(stack) == 1)
-	{
 		return (0);
-		//printf("Already sorted\n");
-	}
-	else
+	else if (argc == 4)
 		ft_sort_small(stack);
-	/*if (ft_test_sort(stack) == 0)
-	{
-		printf("Pas bon\n");
-	}*/
-	//print_stack(stack);
+	else if (argc == 6)
+		ft_sort_five(stack);
+	/*else
+		ft_sort_big(stack);*/
 	free_stack(&(stack->pile_a));
 	free_stack(&(stack->pile_b));
 	free(stack);
 	return (0);
 }
+
+/*
+The grade depends on how efficient the program's sorting process is.
+
+    Sorting 3 values: no more than 3 actions.
+    Sorting 5 values: no more than 12 actions.
+    Sorting 100 values: rating from 1 to 5 points depending on the number of actions:
+        5 points for less than 700 actions
+        4 points for less than 900
+        3 points for less than 1100
+        2 points for less than 1300
+        1 point for less than 1500
+    Sorting 500 values: rating from 1 to 5 points depending on the number of actions:
+        5 points for less than 5500 actions
+        4 points for less than 7000
+        3 points for less than 8500
+        2 points for less than 10000
+        1 point for less than 11500
+*/

@@ -6,7 +6,7 @@
 /*   By: yalounic <yalounic@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/25 18:35:42 by yalounic          #+#    #+#             */
-/*   Updated: 2024/02/10 04:55:19 by yalounic         ###   ########.fr       */
+/*   Updated: 2024/02/11 18:25:31 by yalounic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,3 +48,4 @@ int					ft_test_sort(t_stack *stack);
 char				**ft_split(const char *s, char c);
 int					ft_atoi(const char *str);
 void				ft_fixthis(t_stack *stack);
+int	ft_find_firstnum(t_stack *stack, int chunk);
