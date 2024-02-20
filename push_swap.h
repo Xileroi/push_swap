@@ -6,7 +6,7 @@
 /*   By: yalounic <yalounic@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/25 18:35:42 by yalounic          #+#    #+#             */
-/*   Updated: 2024/02/11 18:25:31 by yalounic         ###   ########.fr       */
+/*   Updated: 2024/02/20 17:09:23 by yalounic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,8 @@
 
 typedef struct s_stack
 {
+	struct s_pile	*pile_tmpa;
+	struct s_pile	*pile_tmpb;
 	struct s_pile	*pile_a;
 	struct s_pile	*pile_b;
 }					t_stack;
@@ -48,4 +50,7 @@ int					ft_test_sort(t_stack *stack);
 char				**ft_split(const char *s, char c);
 int					ft_atoi(const char *str);
 void				ft_fixthis(t_stack *stack);
-int	ft_find_firstnum(t_stack *stack, int chunk);
+int					ft_find_firstnum(t_stack *stack, int chunk);
+int					ft_int_lasta(t_stack *stack);
+int					ft_int_lastb(t_stack *stack);
+void				ft_fill_tmp(t_stack *stack);

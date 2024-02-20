@@ -6,7 +6,7 @@
 /*   By: yalounic <yalounic@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/07 06:30:04 by yalounic          #+#    #+#             */
-/*   Updated: 2024/02/10 04:55:13 by yalounic         ###   ########.fr       */
+/*   Updated: 2024/02/20 17:10:52 by yalounic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,4 +82,34 @@ void	ft_fixthis(t_stack *stack)
 	ft_pa(stack);
 	ft_ra(stack, 0);
 	ft_ra(stack, 0);
+}
+
+int	ft_int_lasta(t_stack *stack)
+{
+	int		tmp_valeur;
+	t_pile	*tmp;
+
+	tmp = stack->pile_a;
+	tmp_valeur = tmp->valeur;
+	while (tmp->next != NULL)
+	{
+		tmp = tmp->next;
+		tmp_valeur = tmp->valeur;
+	}
+	return (tmp->valeur);
+}
+
+int	ft_int_lastb(t_stack *stack)
+{
+	int		tmp_valeur;
+	t_pile	*tmp;
+
+	tmp = stack->pile_b;
+	tmp_valeur = tmp->valeur;
+	while (tmp->next != NULL)
+	{
+		tmp = tmp->next;
+		tmp_valeur = tmp->valeur;
+	}
+	return (tmp->valeur);
 }

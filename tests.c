@@ -6,7 +6,7 @@
 /*   By: yalounic <yalounic@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/25 17:03:11 by yalounic          #+#    #+#             */
-/*   Updated: 2024/02/11 18:36:21 by yalounic         ###   ########.fr       */
+/*   Updated: 2024/02/20 17:11:08 by yalounic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -152,6 +152,7 @@ int	main(int argc, char **argv)
 		push(&(stack->pile_a), ft_atoi(argv[i]));
 		i--;
 	}
+	printf("%d\n", ft_int_lasta(stack));
 	//print_stack(stack);
 	//ft_find_firstnum(stack, 1);
 	if (ft_test_sort(stack) == 1)
