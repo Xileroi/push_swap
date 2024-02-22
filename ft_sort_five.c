@@ -6,7 +6,7 @@
 /*   By: yalounic <yalounic@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/04 16:36:13 by yalounic          #+#    #+#             */
-/*   Updated: 2024/02/10 04:56:00 by yalounic         ###   ########.fr       */
+/*   Updated: 2024/02/22 18:48:13 by yalounic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,7 +81,3 @@ void	ft_sort_five(t_stack *stack)
 	ft_last_check(stack);
 	return ;
 }
-
-/*
-https://generowanie.com/fr/
-*/
