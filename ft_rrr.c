@@ -6,7 +6,7 @@
 /*   By: yalounic <yalounic@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/01 16:03:36 by yalounic          #+#    #+#             */
-/*   Updated: 2024/02/04 17:47:31 by yalounic         ###   ########.fr       */
+/*   Updated: 2024/02/24 17:06:07 by yalounic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,25 @@ void	ft_rra(t_stack *stack, int i)
 		printf("rra\n");
 }
 
+void	ft_rratmp(t_stack *stack)
+{
+	t_pile	*last;
+	t_pile	*before_last;
+
+	last = stack->pile_tmpa;
+	before_last = NULL;
+	if (stack->pile_tmpa == NULL)
+		return ;
+	while (last->next != NULL)
+	{
+		before_last = last;
+		last = last->next;
+	}
+	before_last->next = NULL;
+	last->next = stack->pile_tmpa;
+	stack->pile_tmpa = last;
+}
+
 void	ft_rrb(t_stack *stack, int i)
 {
 	t_pile	*last;
@@ -52,6 +71,25 @@ void	ft_rrb(t_stack *stack, int i)
 	stack->pile_b = last;
 	if (i == 0)
 		printf("rrb\n");
+}
+
+void	ft_rrbtmp(t_stack *stack)
+{
+	t_pile	*last;
+	t_pile	*before_last;
+
+	last = stack->pile_tmpb;
+	before_last = NULL;
+	if (stack->pile_tmpb == NULL)
+		return ;
+	while (last->next != NULL)
+	{
+		before_last = last;
+		last = last->next;
+	}
+	before_last->next = NULL;
+	last->next = stack->pile_tmpb;
+	stack->pile_tmpb = last;
 }
 
 void	ft_rrr(t_stack *stack)

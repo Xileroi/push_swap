@@ -6,7 +6,7 @@
 /*   By: yalounic <yalounic@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/20 17:00:10 by yalounic          #+#    #+#             */
-/*   Updated: 2024/02/22 19:14:24 by yalounic         ###   ########.fr       */
+/*   Updated: 2024/02/24 16:52:07 by yalounic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ int	ft_pos_node(t_stack *stack, int node)
 	tmp = stack->pile_a;
 	tmp_valeur = tmp->valeur;
 	i = 0;
-	while (tmp->next != node)
+	while (tmp->valeur != node)
 	{
 		tmp = tmp->next;
 		tmp_valeur = tmp->valeur;

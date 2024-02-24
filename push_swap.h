@@ -6,7 +6,7 @@
 /*   By: yalounic <yalounic@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/25 18:35:42 by yalounic          #+#    #+#             */
-/*   Updated: 2024/02/22 19:14:34 by yalounic         ###   ########.fr       */
+/*   Updated: 2024/02/24 17:06:16 by yalounic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,4 +55,11 @@ int					ft_int_lasta(t_stack *stack);
 int					ft_int_lastb(t_stack *stack);
 void				ft_fill_tmp(t_stack *stack);
 int					ft_pos_node(t_stack *stack, int node);
-int					ft_pos_last(t_stack *stack)
+int					ft_pos_last(t_stack *stack);
+int	ft_sort_lbig(t_stack *stack);
+void	ft_pbtmp(t_stack *stack);
+void	ft_patmp(t_stack *stack);
+void	ft_ratmp(t_stack *stack);
+void	ft_rbtmp(t_stack *stack);
+void	ft_rratmp(t_stack *stack);
+void	ft_rrbtmp(t_stack *stack);

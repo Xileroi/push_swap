@@ -6,7 +6,7 @@
 /*   By: yalounic <yalounic@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/25 17:03:11 by yalounic          #+#    #+#             */
-/*   Updated: 2024/02/20 17:11:08 by yalounic         ###   ########.fr       */
+/*   Updated: 2024/02/24 16:48:36 by yalounic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -155,7 +155,8 @@ int	main(int argc, char **argv)
 	printf("%d\n", ft_int_lasta(stack));
 	//print_stack(stack);
 	//ft_find_firstnum(stack, 1);
-	if (ft_test_sort(stack) == 1)
+	ft_sort_lbig(stack);
+	/*if (ft_test_sort(stack) == 1)
 		return (0);
 	else if (argc == 4)
 		ft_sort_small(stack);
