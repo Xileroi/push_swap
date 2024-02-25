@@ -6,7 +6,7 @@
 /*   By: yalounic <yalounic@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/11 02:52:30 by yalounic          #+#    #+#             */
-/*   Updated: 2024/02/24 17:07:22 by yalounic         ###   ########.fr       */
+/*   Updated: 2024/02/25 16:07:47 by yalounic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,16 +21,24 @@ int	ft_turkish_tmp(t_stack *stack, int val)
 	lastpos = ft_pos_last(stack);
 	posnode = ft_pos_node(stack, val);
 	i = 0;
-	ft_fill_tmp(stack);
+	printf("\n\na\n");
+	print_stack(&stack->pile_tmpa);
+	printf("b\n");
+	print_stack(&stack->pile_tmpb);
 	if (stack->pile_tmpa->valeur == val)
-		return (1);
-	if (lastpos / 2 >= posnode)
+	{
+		ft_pbtmp(stack);
+		i++;
+	}
+	else if (lastpos / 2 >= posnode)
 	{
 		while (stack->pile_tmpa->valeur != val)
 		{
 			ft_ratmp(stack);
 			i++;
 		}
+		ft_pbtmp(stack);
+		i++;
 	}
 	else if (lastpos / 2 < posnode)
 	{
@@ -39,38 +47,67 @@ int	ft_turkish_tmp(t_stack *stack, int val)
 			ft_rratmp(stack);
 			i++;
 		}
+		ft_pbtmp(stack);
+		i++;
+	}
+	if (stack->pile_tmpb->valeur < stack->pile_tmpb->next->valeur)
+	{
+		ft_rbtmp(stack);
+		i++;
 	}
 	return (i);
 }
 
+	/*printf("\n\na\n");
+	print_stack(&stack->pile_a);
+	printf("b\n");
+	print_stack(&stack->pile_b);*/
+
 int	ft_find_cheapest(t_stack *stack)
 {
-	int	i;
-	int		tmp_valeur;
-	t_pile	*tmp;
-	int	tmpval;
+    int	i;
+    int		tmp_valeur;
+    t_pile	*tmp;
+    int	tmpval;
+    int tmp_i;
 
-	i = 1000;
-	tmp = stack->pile_a;
-	tmp_valeur = tmp->valeur;
-	while (tmp->next != NULL)
-	{
-		if (i > ft_turkish_tmp(stack, tmp_valeur))
-		{
-			i = ft_turkish_tmp(stack, tmp_valeur);
-			tmpval = tmp_valeur;
-			tmp = stack->pile_a;
-			tmp_valeur = tmp->valeur;
-		}
-	}
-	return (tmp_valeur); //return valeur a push
+    i = 1000;
+    ft_fill_tmp(stack);
+    tmp = stack->pile_tmpa;
+    tmp_valeur = tmp->valeur;
+    while (tmp != NULL)
+    {
+        tmp_i = ft_turkish_tmp(stack, tmp_valeur);
+        if (i > tmp_i)
+        {
+            i = tmp_i;
+            tmpval = tmp_valeur;
+        }
+        tmp = tmp->next;
+        if (tmp != NULL)
+        {
+            tmp_valeur = tmp->valeur;
+        }
+    }
+    return (tmpval); //return valeur a push
 }
 
 int	ft_sort_lbig(t_stack *stack)
 {
+	int tmp_valeur;
+	
 	ft_pb(stack);
 	ft_pb(stack);
-    ft_find_cheapest(stack);
+	if(stack->pile_b->valeur < stack->pile_b->next->valeur)
+		ft_rb(stack, 0);
+	while (ft_size(&(stack->pile_a)) > 3)
+	{
+		tmp_valeur = ft_find_cheapest(stack);
+		free_stack(&(stack->pile_tmpa));
+		free_stack(&(stack->pile_tmpb));
+		ft_turkish(stack, tmp_valeur);
+	}
+	return (0);
 }
 
 /*

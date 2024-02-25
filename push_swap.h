@@ -6,7 +6,7 @@
 /*   By: yalounic <yalounic@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/25 18:35:42 by yalounic          #+#    #+#             */
-/*   Updated: 2024/02/24 17:06:16 by yalounic         ###   ########.fr       */
+/*   Updated: 2024/02/25 16:03:39 by yalounic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,6 @@ int					ft_test_sort(t_stack *stack);
 char				**ft_split(const char *s, char c);
 int					ft_atoi(const char *str);
 void				ft_fixthis(t_stack *stack);
-int					ft_find_firstnum(t_stack *stack, int chunk);
 int					ft_int_lasta(t_stack *stack);
 int					ft_int_lastb(t_stack *stack);
 void				ft_fill_tmp(t_stack *stack);
@@ -63,3 +62,6 @@ void	ft_ratmp(t_stack *stack);
 void	ft_rbtmp(t_stack *stack);
 void	ft_rratmp(t_stack *stack);
 void	ft_rrbtmp(t_stack *stack);
+void	ft_sbtmp(t_stack *stack);
+void	ft_turkish(t_stack *stack, int val);
+int	ft_size(t_pile **stack);

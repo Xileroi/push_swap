@@ -6,7 +6,7 @@
 /*   By: yalounic <yalounic@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/29 17:32:44 by yalounic          #+#    #+#             */
-/*   Updated: 2024/02/24 17:08:15 by yalounic         ###   ########.fr       */
+/*   Updated: 2024/02/25 14:05:34 by yalounic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,6 @@ void	ft_ratmp(t_stack *stack)
 	tmp->next = stack->pile_tmpa;
 	stack->pile_tmpa = tmp2;
 	tmp->next->next = NULL;
-	write(1, "o", 1);
 }
 
 void	ft_rb(t_stack *stack, int i)
