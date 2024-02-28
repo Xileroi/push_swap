@@ -6,7 +6,7 @@
 /*   By: yalounic <yalounic@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/11 02:52:30 by yalounic          #+#    #+#             */
-/*   Updated: 2024/02/25 16:07:47 by yalounic         ###   ########.fr       */
+/*   Updated: 2024/02/28 20:01:57 by yalounic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,13 +21,13 @@ int	ft_turkish_tmp(t_stack *stack, int val)
 	lastpos = ft_pos_last(stack);
 	posnode = ft_pos_node(stack, val);
 	i = 0;
-	printf("\n\na\n");
+	/*printf("\n\na\n");
 	print_stack(&stack->pile_tmpa);
-	printf("b\n");
-	print_stack(&stack->pile_tmpb);
+	printf("\nb\n");
+	print_stack(&stack->pile_tmpb);*/
 	if (stack->pile_tmpa->valeur == val)
 	{
-		ft_pbtmp(stack);
+		ft_tmpbfindpeer(stack, val);
 		i++;
 	}
 	else if (lastpos / 2 >= posnode)
@@ -37,7 +37,7 @@ int	ft_turkish_tmp(t_stack *stack, int val)
 			ft_ratmp(stack);
 			i++;
 		}
-		ft_pbtmp(stack);
+		ft_tmpbfindpeer(stack, val);
 		i++;
 	}
 	else if (lastpos / 2 < posnode)
@@ -47,13 +47,7 @@ int	ft_turkish_tmp(t_stack *stack, int val)
 			ft_rratmp(stack);
 			i++;
 		}
-		ft_pbtmp(stack);
-		i++;
-	}
-	if (stack->pile_tmpb->valeur < stack->pile_tmpb->next->valeur)
-	{
-		ft_rbtmp(stack);
-		i++;
+		ft_tmpbfindpeer(stack, val);
 	}
 	return (i);
 }
@@ -95,7 +89,7 @@ int	ft_find_cheapest(t_stack *stack)
 int	ft_sort_lbig(t_stack *stack)
 {
 	int tmp_valeur;
-	
+
 	ft_pb(stack);
 	ft_pb(stack);
 	if(stack->pile_b->valeur < stack->pile_b->next->valeur)
@@ -107,6 +101,25 @@ int	ft_sort_lbig(t_stack *stack)
 		free_stack(&(stack->pile_tmpb));
 		ft_turkish(stack, tmp_valeur);
 	}
+	ft_sort_small(stack);
+	/*while (stack->pile_b->valeur < ft_int_last(&(stack->pile_b)))
+		ft_rb(stack, 0);*/
+	/*while (ft_test_sort(stack) == 0 || stack->pile_b != NULL)
+	{
+		ft_pa(stack);
+		if (stack->pile_a->valeur < stack->pile_b->valeur
+			&& stack->pile_a->next->valeur > stack->pile_b->valeur)
+			{
+				ft_ra(stack, 0);
+				ft_pa(stack);
+			}
+		else
+			ft_ra(stack, 0);
+	}*/
+	printf("\n\na\n");
+	print_stack(&stack->pile_a);
+	printf("b\n");
+	print_stack(&stack->pile_b);
 	return (0);
 }
 

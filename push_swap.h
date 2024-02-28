@@ -6,7 +6,7 @@
 /*   By: yalounic <yalounic@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/25 18:35:42 by yalounic          #+#    #+#             */
-/*   Updated: 2024/02/25 16:03:39 by yalounic         ###   ########.fr       */
+/*   Updated: 2024/02/28 20:00:20 by yalounic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,13 +55,18 @@ int					ft_int_lastb(t_stack *stack);
 void				ft_fill_tmp(t_stack *stack);
 int					ft_pos_node(t_stack *stack, int node);
 int					ft_pos_last(t_stack *stack);
-int	ft_sort_lbig(t_stack *stack);
-void	ft_pbtmp(t_stack *stack);
-void	ft_patmp(t_stack *stack);
-void	ft_ratmp(t_stack *stack);
-void	ft_rbtmp(t_stack *stack);
-void	ft_rratmp(t_stack *stack);
-void	ft_rrbtmp(t_stack *stack);
-void	ft_sbtmp(t_stack *stack);
-void	ft_turkish(t_stack *stack, int val);
-int	ft_size(t_pile **stack);
+int					ft_sort_lbig(t_stack *stack);
+void				ft_pbtmp(t_stack *stack);
+void				ft_patmp(t_stack *stack);
+void				ft_ratmp(t_stack *stack);
+void				ft_rbtmp(t_stack *stack);
+void				ft_rratmp(t_stack *stack);
+void				ft_rrbtmp(t_stack *stack);
+void				ft_sbtmp(t_stack *stack);
+void				ft_turkish(t_stack *stack, int val);
+int					ft_size(t_pile **stack);
+void				ft_bfindpeer(t_stack *stack, int val);
+int					ft_tmpbfindpeer(t_stack *stack, int val);
+int					ft_int_last(t_pile **stack);
+int					ft_maxstack(t_pile **stack);
+int					ft_minstack(t_pile **stack);

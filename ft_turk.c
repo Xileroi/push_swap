@@ -6,11 +6,70 @@
 /*   By: yalounic <yalounic@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/25 15:43:22 by yalounic          #+#    #+#             */
-/*   Updated: 2024/02/25 16:06:09 by yalounic         ###   ########.fr       */
+/*   Updated: 2024/02/28 19:57:41 by yalounic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+
+int	ft_tmpbfindpeer(t_stack *stack, int val)
+{
+	t_pile	*tmp;
+	int		i;
+
+	tmp = stack->pile_tmpb;
+	i = 0;
+	while (tmp != NULL)
+	{
+		if (tmp->valeur < val && tmp->next->valeur > val)
+		{
+			ft_rbtmp(stack);
+			i++;
+			ft_pbtmp(stack);
+			return (i);
+		}
+		ft_rbtmp(stack);
+		tmp = tmp->next;
+		i++;
+	}
+	return (i);
+}
+
+void	ft_bfindpeer(t_stack *stack, int val)
+{
+	t_pile	*tmp;
+
+	tmp = stack->pile_b;
+	while (tmp != NULL)
+	{
+		if (tmp->valeur < val && tmp->next->valeur > val)
+		{
+			ft_rb(stack, 0);
+			ft_pb(stack);
+			return ;
+		}
+		ft_rb(stack, 0);
+		tmp = tmp->next;
+	}
+	return ;
+}
+
+int	ft_int_last(t_pile **stack)
+{
+	int		tmp_valeur;
+	int		i;
+	t_pile	*tmp;
+
+	tmp = *stack;
+	tmp_valeur = tmp->valeur;
+	i = 0;
+	while (tmp->next != NULL)
+	{
+		tmp = tmp->next;
+		tmp_valeur = tmp->valeur;
+	}
+	return (tmp_valeur);
+}
 
 void	ft_turkish(t_stack *stack, int val)
 {
@@ -21,7 +80,7 @@ void	ft_turkish(t_stack *stack, int val)
 	posnode = ft_pos_node(stack, val);
 	if (stack->pile_a->valeur == val)
 	{
-		ft_pb(stack);
+		ft_bfindpeer(stack, val);
 	}
 	else if (lastpos / 2 >= posnode)
 	{
@@ -29,7 +88,7 @@ void	ft_turkish(t_stack *stack, int val)
 		{
 			ft_ra(stack, 0);
 		}
-		ft_pb(stack);
+		ft_bfindpeer(stack, val);
 	}
 	else if (lastpos / 2 < posnode)
 	{
@@ -37,12 +96,6 @@ void	ft_turkish(t_stack *stack, int val)
 		{
 			ft_rra(stack, 0);
 		}
-		ft_pb(stack);
+		ft_bfindpeer(stack, val);
 	}
-	if (stack->pile_b->valeur < stack->pile_b->next->valeur)
-		ft_rb(stack, 0);
-    /*printf("a\n");
-	print_stack(&stack->pile_a);
-	printf("b\n");
-	print_stack(&stack->pile_b);*/
 }

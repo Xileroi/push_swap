@@ -6,7 +6,7 @@
 /*   By: yalounic <yalounic@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/25 17:03:11 by yalounic          #+#    #+#             */
-/*   Updated: 2024/02/25 15:49:21 by yalounic         ###   ########.fr       */
+/*   Updated: 2024/02/28 20:00:11 by yalounic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -127,6 +127,42 @@ int	ft_test_sort(t_stack *stack)
 		tmp_valeur = tmp->valeur;
 	}
 	return (1);
+}
+
+int	ft_minstack(t_pile **stack)
+{
+	int		tmp_valeur;
+	t_pile	*tmp;
+
+	tmp = *stack;
+	tmp_valeur = tmp->valeur;
+	while (tmp->next != NULL)
+	{
+		if (tmp_valeur > tmp->next->valeur)
+		{
+			tmp_valeur = tmp->next->valeur;
+		}
+		tmp = tmp->next;
+	}
+	return (tmp_valeur);
+}
+
+int	ft_maxstack(t_pile **stack)
+{
+	int		tmp_valeur;
+	t_pile	*tmp;
+
+	tmp = *stack;
+	tmp_valeur = tmp->valeur;
+	while (tmp->next != NULL)
+	{
+		if (tmp_valeur < tmp->next->valeur)
+		{
+			tmp_valeur = tmp->next->valeur;
+		}
+		tmp = tmp->next;
+	}
+	return (tmp_valeur);
 }
 
 int	main(int argc, char **argv)
