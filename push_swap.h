@@ -6,7 +6,7 @@
 /*   By: yalounic <yalounic@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/25 18:35:42 by yalounic          #+#    #+#             */
-/*   Updated: 2024/02/28 20:00:20 by yalounic         ###   ########.fr       */
+/*   Updated: 2024/03/01 18:05:11 by yalounic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,3 +70,6 @@ int					ft_tmpbfindpeer(t_stack *stack, int val);
 int					ft_int_last(t_pile **stack);
 int					ft_maxstack(t_pile **stack);
 int					ft_minstack(t_pile **stack);
+int					ft_intmax(t_stack *stack);
+int					ft_intmin(t_stack *stack);
+void				ft_pushmix(t_stack *stack);

@@ -6,7 +6,7 @@
 /*   By: yalounic <yalounic@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/25 15:43:22 by yalounic          #+#    #+#             */
-/*   Updated: 2024/02/28 19:57:41 by yalounic         ###   ########.fr       */
+/*   Updated: 2024/03/01 18:03:06 by yalounic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,11 +21,17 @@ int	ft_tmpbfindpeer(t_stack *stack, int val)
 	i = 0;
 	while (tmp != NULL)
 	{
-		if (tmp->valeur < val && tmp->next->valeur > val)
+		if (tmp->valeur > val && tmp->next->valeur < val)
 		{
 			ft_rbtmp(stack);
 			i++;
 			ft_pbtmp(stack);
+			return (i);
+		}
+		else if (i > ft_pos_last(stack))
+		{
+			ft_pbtmp(stack);
+			i++;
 			return (i);
 		}
 		ft_rbtmp(stack);
@@ -37,18 +43,26 @@ int	ft_tmpbfindpeer(t_stack *stack, int val)
 
 void	ft_bfindpeer(t_stack *stack, int val)
 {
+	int		i;
 	t_pile	*tmp;
 
 	tmp = stack->pile_b;
+	i = 0;
 	while (tmp != NULL)
 	{
-		if (tmp->valeur < val && tmp->next->valeur > val)
+		if (tmp->valeur > val && tmp->next->valeur < val)
 		{
 			ft_rb(stack, 0);
 			ft_pb(stack);
 			return ;
 		}
+		else if (i > ft_pos_last(stack))
+		{
+			ft_pb(stack);
+			return ;
+		}
 		ft_rb(stack, 0);
+		i++;
 		tmp = tmp->next;
 	}
 	return ;
