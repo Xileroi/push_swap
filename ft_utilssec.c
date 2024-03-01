@@ -6,7 +6,7 @@
 /*   By: yalounic <yalounic@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/20 17:00:10 by yalounic          #+#    #+#             */
-/*   Updated: 2024/02/25 16:03:33 by yalounic         ###   ########.fr       */
+/*   Updated: 2024/03/01 19:24:00 by yalounic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,7 @@ t_pile	*copy_pile(t_pile *original)
         }
         node = node->next;
     }
+	free(tmp);
     return (copy);
 }
 

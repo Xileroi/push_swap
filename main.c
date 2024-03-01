@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   tests.c                                            :+:      :+:    :+:   */
+/*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yalounic <yalounic@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/25 17:03:11 by yalounic          #+#    #+#             */
-/*   Updated: 2024/02/28 20:00:11 by yalounic         ###   ########.fr       */
+/*   Updated: 2024/03/01 19:22:01 by yalounic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,29 +64,10 @@ void	print_stack(t_pile **stack)
 	}
 }
 
-/*int add_maillon(t_pile **stack, int value)
-{
-	t_pile	*tmp;
-	t_pile	*maillon;
-
-	tmp = *stack;
-	while (tmp != NULL && tmp->next != NULL)
-	{
-		tmp = tmp->next;
-	}
-	maillon = malloc(sizeof(t_pile));
-	if (maillon == NULL)
-	{
-		return (-1);
-	}
-	maillon->valeur = value;
-	maillon->next = NULL;
-	tmp->next = maillon;
-}*/
 t_pile	*new_pile_element(int valeur)
 {
 	t_pile	*newelement;
-	
+
 	newelement = (t_pile *)malloc(sizeof(t_pile));
 	if (newelement == NULL)
 	{
@@ -167,9 +148,10 @@ int	ft_maxstack(t_pile **stack)
 
 int	main(int argc, char **argv)
 {
-	int		i = 0;
+	int		i;
 	t_stack	*stack;
 
+	i = 0;
 	if (argc <= 1)
 		return (0);
 	stack = (t_stack *)malloc(sizeof(t_stack));
@@ -188,40 +170,16 @@ int	main(int argc, char **argv)
 		push(&(stack->pile_a), ft_atoi(argv[i]));
 		i--;
 	}
-	//print_stack(stack);
-	//ft_find_firstnum(stack, 1);
-	ft_sort_lbig(stack);
-	/*if (ft_test_sort(stack) == 1)
+	if (ft_test_sort(stack) == 1)
 		return (0);
 	else if (argc == 4)
 		ft_sort_small(stack);
 	else if (argc == 6)
 		ft_sort_five(stack);
-	/*else
-		ft_sort_big(stack);*/
-	/*free_stack(&(stack->pile_a));
+	else
+		ft_sort_lbig(stack);
+	free_stack(&(stack->pile_a));
 	free_stack(&(stack->pile_b));
-	free_stack(&(stack->pile_tmpa));
-	free_stack(&(stack->pile_tmpb));*/
 	free(stack);
 	return (0);
 }
-
-/*
-The grade depends on how efficient the program's sorting process is.
-
-    Sorting 3 values: no more than 3 actions.
-    Sorting 5 values: no more than 12 actions.
-    Sorting 100 values: rating from 1 to 5 points depending on the number of actions:
-        5 points for less than 700 actions
-        4 points for less than 900
-        3 points for less than 1100
-        2 points for less than 1300
-        1 point for less than 1500
-    Sorting 500 values: rating from 1 to 5 points depending on the number of actions:
-        5 points for less than 5500 actions
-        4 points for less than 7000
-        3 points for less than 8500
-        2 points for less than 10000
-        1 point for less than 11500
-*/
