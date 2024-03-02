@@ -6,7 +6,7 @@
 /*   By: yalounic <yalounic@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/25 18:35:36 by yalounic          #+#    #+#             */
-/*   Updated: 2024/02/25 14:40:58 by yalounic         ###   ########.fr       */
+/*   Updated: 2024/03/02 15:14:03 by yalounic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ void	ft_sa(t_stack *stack, int i)
 	tmp->valeur = tmp->next->valeur;
 	tmp->next->valeur = tmp_valeur;
 	if (i == 0)
-		printf("sa\n");
+		write(1, "sa\n", 3);
 }
 
 void	ft_sb(t_stack *stack, int i)
@@ -39,7 +39,7 @@ void	ft_sb(t_stack *stack, int i)
 	tmp->valeur = tmp->next->valeur;
 	tmp->next->valeur = tmp_valeur;
 	if (i == 0)
-		printf("sb\n");
+		write(1, "sb\n", 3);
 }
 
 void	ft_sbtmp(t_stack *stack)
@@ -59,5 +59,5 @@ void	ft_ss(t_stack *stack)
 {
 	ft_sa(stack, 1);
 	ft_sb(stack, 1);
-	printf("ss\n");
+	write(1, "ss\n", 3);
 }

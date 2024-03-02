@@ -6,7 +6,7 @@
 /*   By: yalounic <yalounic@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/25 18:35:42 by yalounic          #+#    #+#             */
-/*   Updated: 2024/03/01 18:05:11 by yalounic         ###   ########.fr       */
+/*   Updated: 2024/03/02 15:12:24 by yalounic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,6 @@ void				ft_sb(t_stack *stack, int i);
 void				ft_sa(t_stack *stack, int i);
 void				push(t_pile **pile, int valeur);
 t_pile				*new_pile_element(int valeur);
-void				print_stack(t_pile **stack);
 void				dell_value(t_pile **stack, int value);
 void				free_stack(t_pile **stack);
 void				ft_ss(t_stack *stack);

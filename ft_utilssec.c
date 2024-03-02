@@ -6,7 +6,7 @@
 /*   By: yalounic <yalounic@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/20 17:00:10 by yalounic          #+#    #+#             */
-/*   Updated: 2024/03/01 19:24:00 by yalounic         ###   ########.fr       */
+/*   Updated: 2024/03/02 15:30:41 by yalounic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,36 +14,38 @@
 
 t_pile	*copy_pile(t_pile *original)
 {
-    t_pile *copy = NULL;
-    t_pile *tmp = NULL;
-    t_pile *node = original;
+	t_pile	*copy;
+	t_pile	*tmp;
+	t_pile	*node;
+	t_pile	*new_node;
 
-    while (node != NULL)
-    {
-        t_pile *new_node = malloc(sizeof(t_pile));
-        new_node->valeur = node->valeur;
-        new_node->next = NULL;
-
-        if (copy == NULL)
-        {
-            copy = new_node;
-            tmp = copy;
-        }
-        else
-        {
-            tmp->next = new_node;
-            tmp = tmp->next;
-        }
-        node = node->next;
-    }
-	free(tmp);
-    return (copy);
+	copy = NULL;
+	tmp = NULL;
+	node = original;
+	while (node != NULL)
+	{
+		new_node = malloc(sizeof(t_pile));
+		new_node->valeur = node->valeur;
+		new_node->next = NULL;
+		if (copy == NULL)
+		{
+			copy = new_node;
+			tmp = copy;
+		}
+		else
+		{
+			tmp->next = new_node;
+			tmp = tmp->next;
+		}
+		node = node->next;
+	}
+	return (copy);
 }
 
 void	ft_fill_tmp(t_stack *stack)
 {
-    stack->pile_tmpa = copy_pile(stack->pile_a);
-    stack->pile_tmpb = copy_pile(stack->pile_b);
+	stack->pile_tmpa = copy_pile(stack->pile_a);
+	stack->pile_tmpb = copy_pile(stack->pile_b);
 }
 
 int	ft_pos_node(t_stack *stack, int node)

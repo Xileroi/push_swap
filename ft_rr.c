@@ -6,7 +6,7 @@
 /*   By: yalounic <yalounic@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/29 17:32:44 by yalounic          #+#    #+#             */
-/*   Updated: 2024/02/25 14:05:34 by yalounic         ###   ########.fr       */
+/*   Updated: 2024/03/02 15:13:44 by yalounic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ void	ft_ra(t_stack *stack, int i)
 	stack->pile_a = tmp2;
 	tmp->next->next = NULL;
 	if (i == 0)
-		printf("ra\n");
+		write(1, "ra\n", 3);
 }
 
 void	ft_ratmp(t_stack *stack)
@@ -61,7 +61,7 @@ void	ft_rb(t_stack *stack, int i)
 	stack->pile_b = tmp2;
 	tmp->next->next = NULL;
 	if (i == 0)
-		printf("rb\n");
+		write(1, "rb\n", 3);
 }
 
 void	ft_rbtmp(t_stack *stack)
@@ -84,5 +84,5 @@ void	ft_rr(t_stack *stack)
 {
 	ft_ra(stack, 1);
 	ft_rb(stack, 1);
-	printf("rr\n");
+	write(1, "rr\n", 3);
 }

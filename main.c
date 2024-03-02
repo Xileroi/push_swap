@@ -6,63 +6,11 @@
 /*   By: yalounic <yalounic@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/25 17:03:11 by yalounic          #+#    #+#             */
-/*   Updated: 2024/03/01 19:22:01 by yalounic         ###   ########.fr       */
+/*   Updated: 2024/03/02 15:40:33 by yalounic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
-void	free_stack(t_pile **stack)
-{
-	t_pile	*tmp;
-	t_pile	*tmp_del;
-
-	tmp = *stack;
-	while (tmp != NULL)
-	{
-		tmp_del = tmp;
-		tmp = tmp->next;
-		free(tmp_del);
-	}
-	*stack = NULL;
-}
-
-void	dell_value(t_pile **stack, int value)
-{
-	t_pile	*tmp;
-	t_pile	*del;
-
-	tmp = *stack;
-	while (tmp != NULL && tmp->next != NULL && tmp->next->valeur != value)
-	{
-		tmp = tmp->next;
-	}
-	if (tmp->next == NULL)
-	{
-		if (tmp->valeur == value)
-		{
-			free(tmp);
-			*stack = NULL;
-		}
-		else
-			return ;
-	}
-	del = tmp->next;
-	tmp->next = tmp->next->next;
-	free(del);
-}
-
-void	print_stack(t_pile **stack)
-{
-	t_pile	*tmp;
-
-	tmp = *stack;
-	while (tmp != NULL)
-	{
-		printf("%d\n", tmp->valeur);
-		tmp = tmp->next;
-	}
-}
 
 t_pile	*new_pile_element(int valeur)
 {
@@ -128,23 +76,7 @@ int	ft_minstack(t_pile **stack)
 	return (tmp_valeur);
 }
 
-int	ft_maxstack(t_pile **stack)
-{
-	int		tmp_valeur;
-	t_pile	*tmp;
-
-	tmp = *stack;
-	tmp_valeur = tmp->valeur;
-	while (tmp->next != NULL)
-	{
-		if (tmp_valeur < tmp->next->valeur)
-		{
-			tmp_valeur = tmp->next->valeur;
-		}
-		tmp = tmp->next;
-	}
-	return (tmp_valeur);
-}
+// INTAX MIN, int, doubles
 
 int	main(int argc, char **argv)
 {
@@ -178,8 +110,30 @@ int	main(int argc, char **argv)
 		ft_sort_five(stack);
 	else
 		ft_sort_lbig(stack);
+	if (ft_test_sort(stack) == 1)
+		write(1, "OK\n", 3);
+	else
+		write(1, "KO\n", 3);
 	free_stack(&(stack->pile_a));
 	free_stack(&(stack->pile_b));
 	free(stack);
 	return (0);
 }
+
+/*
+The grade depends on how efficient the program's sorting process is.
+    Sorting 3 values: no more than 3 actions.
+    Sorting 5 values: no more than 12 actions.
+    Sorting 100 values: rating from 1 to 5 points depending on the number of actions:
+        5 points for less than 700 actions
+        4 points for less than 900
+        3 points for less than 1100
+        2 points for less than 1300
+        1 point for less than 1500
+    Sorting 500 values: rating from 1 to 5 points depending on the number of actions:
+        5 points for less than 5500 actions
+        4 points for less than 7000
+        3 points for less than 8500
+        2 points for less than 10000
+        1 point for less than 11500
+*/

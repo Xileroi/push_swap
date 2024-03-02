@@ -6,7 +6,7 @@
 /*   By: yalounic <yalounic@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/29 16:09:51 by yalounic          #+#    #+#             */
-/*   Updated: 2024/02/24 17:01:20 by yalounic         ###   ########.fr       */
+/*   Updated: 2024/03/02 15:13:10 by yalounic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ void	ft_pa(t_stack *stack)
 	stack->pile_b = tmp2;
 	tmp->next = stack->pile_a;
 	stack->pile_a = tmp;
-	printf("pa\n");
+	write(1, "pa\n", 3);
 }
 
 void	ft_patmp(t_stack *stack)
@@ -53,7 +53,7 @@ void	ft_pb(t_stack *stack)
 	stack->pile_a = tmp2;
 	tmp->next = stack->pile_b;
 	stack->pile_b = tmp;
-	printf("pb\n");
+	write(1, "pb\n", 3);
 }
 
 void	ft_pbtmp(t_stack *stack)

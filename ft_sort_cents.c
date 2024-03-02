@@ -6,7 +6,7 @@
 /*   By: yalounic <yalounic@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/11 02:52:30 by yalounic          #+#    #+#             */
-/*   Updated: 2024/03/01 19:12:56 by yalounic         ###   ########.fr       */
+/*   Updated: 2024/03/02 15:28:37 by yalounic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,9 +96,7 @@ int	ft_sort_lbig(t_stack *stack)
 	{
 		if (stack->pile_b->valeur < ft_int_lasta(stack)
 			&& stack->pile_b->next != NULL)
-		{
 			ft_rra(stack, 0);
-		}
 		else
 			ft_pa(stack);
 	}
