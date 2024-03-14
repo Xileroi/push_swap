@@ -6,7 +6,7 @@
 /*   By: yalounic <yalounic@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/01 17:44:51 by yalounic          #+#    #+#             */
-/*   Updated: 2024/03/14 16:51:23 by yalounic         ###   ########.fr       */
+/*   Updated: 2024/03/14 20:38:55 by yalounic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,26 +48,31 @@ void	ft_pushmix(t_stack *stack)
 {
 	int	max;
 	int	min;
-	int	i;
 
 	max = ft_intmax(stack);
 	min = ft_intmin(stack);
-	i = 0;
-	while (i != 2)
+	if (ft_pos_last(stack) / 2 >= ft_pos_node(stack, max))
 	{
-		if (stack->pile_a->valeur == max)
-		{
-			ft_pb(stack);
-			i++;
-		}
-		else if (stack->pile_a->valeur == min)
-		{
-			ft_pb(stack);
-			i++;
-		}
-		else
+		while (stack->pile_a->valeur != max)
 			ft_ra(stack, 0);
 	}
+	else if (ft_pos_last(stack) / 2 < ft_pos_node(stack, max))
+	{
+		while (stack->pile_a->valeur != max)
+			ft_rra(stack, 0);
+	}
+	ft_pb(stack);
+	if (ft_pos_last(stack) / 2 >= ft_pos_node(stack, min))
+	{
+		while (stack->pile_a->valeur != min)
+			ft_ra(stack, 0);
+	}
+	else if (ft_pos_last(stack) / 2 < ft_pos_node(stack, min))
+	{
+		while (stack->pile_a->valeur != min)
+			ft_rra(stack, 0);
+	}
+	ft_pb(stack);
 }
 
 int	ft_maxstack(t_pile **stack)

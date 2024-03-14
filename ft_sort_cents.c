@@ -6,7 +6,7 @@
 /*   By: yalounic <yalounic@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/11 02:52:30 by yalounic          #+#    #+#             */
-/*   Updated: 2024/03/14 17:42:58 by yalounic         ###   ########.fr       */
+/*   Updated: 2024/03/14 21:44:33 by yalounic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,12 +74,9 @@ int	ft_find_cheapest(t_stack *stack)
 
 int	ft_sort_lbig(t_stack *stack)
 {
-	//int	tmp_valeur;
-	int	minb;
-
+	// int	tmp_valeur;
+	// int	lasta;
 	ft_pushmix(stack);
-	if (stack->pile_b->valeur < stack->pile_b->next->valeur)
-		ft_rb(stack, 0);
 	while (ft_sizea(stack) > 3)
 	{
 		/*tmp_valeur = ft_find_cheapest(stack);
@@ -91,29 +88,33 @@ int	ft_sort_lbig(t_stack *stack)
 	ft_sort_small(stack);
 	while (ft_int_lastb(stack) > stack->pile_b->valeur)
 		ft_rrb(stack, 0);
-	ft_pa(stack);
-	minb = ft_intminb(stack);
 	while (stack->pile_b != NULL)
 	{
-		if (minb < stack->pile_a->valeur && minb == stack->pile_b->valeur)
-			ft_pa(stack);
-		else if (stack->pile_b->valeur > stack->pile_a->valeur && stack->pile_b->valeur < stack->pile_a->next->valeur)
+		ft_pa(stack);
+		while (stack->pile_b != NULL && ft_test_sort(stack) != 1)
 		{
-			ft_pa(stack);
-			ft_sa(stack, 0);
+			if (stack->pile_a->valeur < ft_int_lasta(stack)
+				&& ft_int_lasta(stack) != ft_maxstack(&(stack->pile_a)))
+			{
+				ft_rra(stack, 0);
+				ft_sa(stack, 0);
+			}
+			else if (stack->pile_b->valeur == ft_minstack(&(stack->pile_b)))
+			{
+				ft_pa(stack);
+				while (ft_test_sort(stack) != 1)
+				{
+					ft_rra(stack, 0);
+					ft_sa(stack, 0);
+				}
+			}
+			else
+				ft_pa(stack);
 		}
-		else
-			ft_rra(stack, 0);
-	}
-	if (ft_int_lasta(stack) > stack->pile_a->valeur
-		&& ft_int_lasta(stack) < stack->pile_a->next->valeur)
-	{
-		ft_rra(stack, 0);
-		ft_sa(stack, 0);
 	}
 	return (0);
 }
-	
+
 /*
 Trouver le nombre avec le moins de points possible,
 	rb/rrb ra/rra en fonction de la pos et comparer a chaque fois

@@ -6,7 +6,7 @@
 /*   By: yalounic <yalounic@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/25 17:03:11 by yalounic          #+#    #+#             */
-/*   Updated: 2024/03/14 17:45:15 by yalounic         ###   ########.fr       */
+/*   Updated: 2024/03/14 21:24:20 by yalounic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -119,10 +119,10 @@ int	main(int argc, char **argv)
 		ft_sort_five(stack);
 	else
 		ft_sort_lbig(stack);
-	if (ft_test_sort(stack) == 1)
+	/*if (ft_test_sort(stack) == 1)
 		write(1, "OK\n", 3);
 	else
-		write(1, "KO\n", 3);
+		write(1, "KO\n", 3);*/
 	//ft_print_pile(stack->pile_a);
 	free_stack(&(stack->pile_a));
 	free_stack(&(stack->pile_b));
