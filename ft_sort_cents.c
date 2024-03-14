@@ -6,7 +6,7 @@
 /*   By: yalounic <yalounic@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/11 02:52:30 by yalounic          #+#    #+#             */
-/*   Updated: 2024/03/02 15:28:37 by yalounic         ###   ########.fr       */
+/*   Updated: 2024/03/14 17:42:58 by yalounic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ int	ft_find_cheapest(t_stack *stack)
 	int		tmpval;
 	int		tmp_i;
 
-	i = 1000;
+	i = 100000;
 	ft_fill_tmp(stack);
 	tmp = stack->pile_tmpa;
 	tmp_valeur = tmp->valeur;
@@ -67,38 +67,43 @@ int	ft_find_cheapest(t_stack *stack)
 		}
 		tmp = tmp->next;
 		if (tmp != NULL)
-		{
 			tmp_valeur = tmp->valeur;
-		}
 	}
 	return (tmpval);
 }
 
 int	ft_sort_lbig(t_stack *stack)
 {
-	int	tmp_valeur;
+	//int	tmp_valeur;
+	int	minb;
 
 	ft_pushmix(stack);
 	if (stack->pile_b->valeur < stack->pile_b->next->valeur)
 		ft_rb(stack, 0);
-	while (ft_size(&(stack->pile_a)) > 3)
+	while (ft_sizea(stack) > 3)
 	{
-		tmp_valeur = ft_find_cheapest(stack);
+		/*tmp_valeur = ft_find_cheapest(stack);
 		free_stack(&(stack->pile_tmpa));
 		free_stack(&(stack->pile_tmpb));
-		ft_turkish(stack, tmp_valeur);
+		ft_turkish(stack, tmp_valeur);*/
+		ft_turkish(stack);
 	}
 	ft_sort_small(stack);
-	if (ft_int_lastb(stack) > stack->pile_b->valeur)
+	while (ft_int_lastb(stack) > stack->pile_b->valeur)
 		ft_rrb(stack, 0);
 	ft_pa(stack);
+	minb = ft_intminb(stack);
 	while (stack->pile_b != NULL)
 	{
-		if (stack->pile_b->valeur < ft_int_lasta(stack)
-			&& stack->pile_b->next != NULL)
-			ft_rra(stack, 0);
-		else
+		if (minb < stack->pile_a->valeur && minb == stack->pile_b->valeur)
 			ft_pa(stack);
+		else if (stack->pile_b->valeur > stack->pile_a->valeur && stack->pile_b->valeur < stack->pile_a->next->valeur)
+		{
+			ft_pa(stack);
+			ft_sa(stack, 0);
+		}
+		else
+			ft_rra(stack, 0);
 	}
 	if (ft_int_lasta(stack) > stack->pile_a->valeur
 		&& ft_int_lasta(stack) < stack->pile_a->next->valeur)
@@ -108,7 +113,7 @@ int	ft_sort_lbig(t_stack *stack)
 	}
 	return (0);
 }
-
+	
 /*
 Trouver le nombre avec le moins de points possible,
 	rb/rrb ra/rra en fonction de la pos et comparer a chaque fois

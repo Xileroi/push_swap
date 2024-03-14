@@ -6,7 +6,7 @@
 /*   By: yalounic <yalounic@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/25 18:35:42 by yalounic          #+#    #+#             */
-/*   Updated: 2024/03/02 15:12:24 by yalounic         ###   ########.fr       */
+/*   Updated: 2024/03/14 17:43:17 by yalounic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,8 +62,9 @@ void				ft_rbtmp(t_stack *stack);
 void				ft_rratmp(t_stack *stack);
 void				ft_rrbtmp(t_stack *stack);
 void				ft_sbtmp(t_stack *stack);
-void				ft_turkish(t_stack *stack, int val);
-int					ft_size(t_pile **stack);
+//void				ft_turkish(t_stack *stack, int val);
+void	ft_turkish(t_stack *stack);
+int					ft_sizea(t_stack *stack);
 void				ft_bfindpeer(t_stack *stack, int val);
 int					ft_tmpbfindpeer(t_stack *stack, int val);
 int					ft_int_last(t_pile **stack);
@@ -72,3 +73,5 @@ int					ft_minstack(t_pile **stack);
 int					ft_intmax(t_stack *stack);
 int					ft_intmin(t_stack *stack);
 void				ft_pushmix(t_stack *stack);
+void				ft_print_pile(t_pile *pile);
+int					ft_intminb(t_stack *stack);

@@ -6,7 +6,7 @@
 /*   By: yalounic <yalounic@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/25 17:03:11 by yalounic          #+#    #+#             */
-/*   Updated: 2024/03/02 15:40:33 by yalounic         ###   ########.fr       */
+/*   Updated: 2024/03/14 17:45:15 by yalounic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,11 +41,9 @@ void	push(t_pile **pile, int valeur)
 
 int	ft_test_sort(t_stack *stack)
 {
-	int		tmp_valeur;
 	t_pile	*tmp;
 
 	tmp = stack->pile_a;
-	tmp_valeur = tmp->valeur;
 	while (tmp->next != NULL)
 	{
 		if (tmp->valeur > tmp->next->valeur)
@@ -53,7 +51,6 @@ int	ft_test_sort(t_stack *stack)
 			return (0);
 		}
 		tmp = tmp->next;
-		tmp_valeur = tmp->valeur;
 	}
 	return (1);
 }
@@ -74,6 +71,18 @@ int	ft_minstack(t_pile **stack)
 		tmp = tmp->next;
 	}
 	return (tmp_valeur);
+}
+
+void ft_print_pile(t_pile *pile)
+{
+	t_pile	*tmp;
+
+	tmp = pile;
+	while (tmp != NULL)
+	{
+		printf("%d\n", tmp->valeur);
+		tmp = tmp->next;
+	}
 }
 
 // INTAX MIN, int, doubles
@@ -114,6 +123,7 @@ int	main(int argc, char **argv)
 		write(1, "OK\n", 3);
 	else
 		write(1, "KO\n", 3);
+	//ft_print_pile(stack->pile_a);
 	free_stack(&(stack->pile_a));
 	free_stack(&(stack->pile_b));
 	free(stack);

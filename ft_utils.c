@@ -6,7 +6,7 @@
 /*   By: yalounic <yalounic@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/07 06:30:04 by yalounic          #+#    #+#             */
-/*   Updated: 2024/02/20 17:10:52 by yalounic         ###   ########.fr       */
+/*   Updated: 2024/03/14 16:53:52 by yalounic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,7 +96,7 @@ int	ft_int_lasta(t_stack *stack)
 		tmp = tmp->next;
 		tmp_valeur = tmp->valeur;
 	}
-	return (tmp->valeur);
+	return (tmp_valeur);
 }
 
 int	ft_int_lastb(t_stack *stack)
@@ -111,5 +111,5 @@ int	ft_int_lastb(t_stack *stack)
 		tmp = tmp->next;
 		tmp_valeur = tmp->valeur;
 	}
-	return (tmp->valeur);
+	return (tmp_valeur);
 }

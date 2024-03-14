@@ -6,7 +6,7 @@
 /*   By: yalounic <yalounic@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/20 17:00:10 by yalounic          #+#    #+#             */
-/*   Updated: 2024/03/02 15:30:41 by yalounic         ###   ########.fr       */
+/*   Updated: 2024/03/14 17:10:05 by yalounic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,28 +39,32 @@ t_pile	*copy_pile(t_pile *original)
 		}
 		node = node->next;
 	}
+	free(node);
 	return (copy);
 }
 
 void	ft_fill_tmp(t_stack *stack)
 {
+	if (stack->pile_tmpa != NULL)
+		free_stack(&(stack->pile_tmpa));
+	if (stack->pile_tmpb != NULL)
+		free_stack(&(stack->pile_tmpb));
+	stack->pile_tmpa = NULL;
+    stack->pile_tmpb = NULL;
 	stack->pile_tmpa = copy_pile(stack->pile_a);
 	stack->pile_tmpb = copy_pile(stack->pile_b);
 }
 
 int	ft_pos_node(t_stack *stack, int node)
 {
-	int		tmp_valeur;
 	int		i;
 	t_pile	*tmp;
 
 	tmp = stack->pile_a;
-	tmp_valeur = tmp->valeur;
 	i = 0;
 	while (tmp->valeur != node)
 	{
 		tmp = tmp->next;
-		tmp_valeur = tmp->valeur;
 		i++;
 	}
 	return (i);
@@ -68,32 +72,30 @@ int	ft_pos_node(t_stack *stack, int node)
 
 int	ft_pos_last(t_stack *stack)
 {
-	int		tmp_valeur;
 	int		i;
 	t_pile	*tmp;
 
 	tmp = stack->pile_a;
-	tmp_valeur = tmp->valeur;
 	i = 0;
 	while (tmp->next != NULL)
 	{
 		tmp = tmp->next;
-		tmp_valeur = tmp->valeur;
 		i++;
 	}
 	return (i);
 }
 
-int	ft_size(t_pile **stack)
+int ft_sizea(t_stack *stack)
 {
-	t_pile	*tmp;
 	int		i;
+	t_pile	*tmp;
 
-	tmp = *stack;
+	tmp = stack->pile_a;
+	i = 0;
 	while (tmp != NULL)
 	{
-		i++;
 		tmp = tmp->next;
+		i++;
 	}
 	return (i);
 }

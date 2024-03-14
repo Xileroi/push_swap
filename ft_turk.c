@@ -6,7 +6,7 @@
 /*   By: yalounic <yalounic@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/25 15:43:22 by yalounic          #+#    #+#             */
-/*   Updated: 2024/03/01 18:03:06 by yalounic         ###   ########.fr       */
+/*   Updated: 2024/03/14 17:43:20 by yalounic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,12 +71,10 @@ void	ft_bfindpeer(t_stack *stack, int val)
 int	ft_int_last(t_pile **stack)
 {
 	int		tmp_valeur;
-	int		i;
 	t_pile	*tmp;
 
 	tmp = *stack;
 	tmp_valeur = tmp->valeur;
-	i = 0;
 	while (tmp->next != NULL)
 	{
 		tmp = tmp->next;
@@ -85,9 +83,13 @@ int	ft_int_last(t_pile **stack)
 	return (tmp_valeur);
 }
 
-void	ft_turkish(t_stack *stack, int val)
+void	ft_turkish(t_stack *stack)
 {
-	int	lastpos;
+	int val;
+
+	val = stack->pile_a->valeur;
+	ft_bfindpeer(stack, val);
+	/*int	lastpos;
 	int	posnode;
 
 	lastpos = ft_pos_last(stack);
@@ -111,5 +113,5 @@ void	ft_turkish(t_stack *stack, int val)
 			ft_rra(stack, 0);
 		}
 		ft_bfindpeer(stack, val);
-	}
+	}*/
 }
