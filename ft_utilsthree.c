@@ -6,7 +6,7 @@
 /*   By: yalounic <yalounic@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/01 17:44:51 by yalounic          #+#    #+#             */
-/*   Updated: 2024/03/14 20:38:55 by yalounic         ###   ########.fr       */
+/*   Updated: 2024/03/15 22:04:06 by yalounic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,30 +46,25 @@ int	ft_intmin(t_stack *stack)
 
 void	ft_pushmix(t_stack *stack)
 {
-	int	max;
-	int	min;
-
-	max = ft_intmax(stack);
-	min = ft_intmin(stack);
-	if (ft_pos_last(stack) / 2 >= ft_pos_node(stack, max))
+	if (ft_pos_last(stack) / 2 >= ft_pos_node(stack, ft_intmax(stack)))
 	{
-		while (stack->pile_a->valeur != max)
+		while (stack->pile_a->valeur != ft_intmax(stack))
 			ft_ra(stack, 0);
 	}
-	else if (ft_pos_last(stack) / 2 < ft_pos_node(stack, max))
+	else if (ft_pos_last(stack) / 2 < ft_pos_node(stack, ft_intmax(stack)))
 	{
-		while (stack->pile_a->valeur != max)
+		while (stack->pile_a->valeur != ft_intmax(stack))
 			ft_rra(stack, 0);
 	}
 	ft_pb(stack);
-	if (ft_pos_last(stack) / 2 >= ft_pos_node(stack, min))
+	if (ft_pos_last(stack) / 2 >= ft_pos_node(stack, ft_intmin(stack)))
 	{
-		while (stack->pile_a->valeur != min)
+		while (stack->pile_a->valeur != ft_intmin(stack))
 			ft_ra(stack, 0);
 	}
-	else if (ft_pos_last(stack) / 2 < ft_pos_node(stack, min))
+	else if (ft_pos_last(stack) / 2 < ft_pos_node(stack, ft_intmin(stack)))
 	{
-		while (stack->pile_a->valeur != min)
+		while (stack->pile_a->valeur != ft_intmin(stack))
 			ft_rra(stack, 0);
 	}
 	ft_pb(stack);

@@ -6,7 +6,7 @@
 /*   By: yalounic <yalounic@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/25 18:35:42 by yalounic          #+#    #+#             */
-/*   Updated: 2024/03/14 17:43:17 by yalounic         ###   ########.fr       */
+/*   Updated: 2024/03/16 13:17:20 by yalounic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@ typedef struct s_stack
 typedef struct s_pile
 {
 	int				valeur;
+	int				rpos;
 	struct s_pile	*next;
 }					t_pile;
 
@@ -75,3 +76,6 @@ int					ft_intmin(t_stack *stack);
 void				ft_pushmix(t_stack *stack);
 void				ft_print_pile(t_pile *pile);
 int					ft_intminb(t_stack *stack);
+int	ft_pos_nodeb(t_stack *stack, int node);
+int	ft_pos_lastb(t_stack *stack);
+void	ft_find_rpos(t_stack *stack, int lmin, int rpos);

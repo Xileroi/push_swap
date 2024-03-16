@@ -6,7 +6,7 @@
 /*   By: yalounic <yalounic@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/11 02:52:30 by yalounic          #+#    #+#             */
-/*   Updated: 2024/03/14 21:44:33 by yalounic         ###   ########.fr       */
+/*   Updated: 2024/03/15 22:14:27 by yalounic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,7 +74,7 @@ int	ft_find_cheapest(t_stack *stack)
 
 int	ft_sort_lbig(t_stack *stack)
 {
-	// int	tmp_valeur;
+	//int	tmp_valeur;
 	// int	lasta;
 	ft_pushmix(stack);
 	while (ft_sizea(stack) > 3)
@@ -85,7 +85,40 @@ int	ft_sort_lbig(t_stack *stack)
 		ft_turkish(stack, tmp_valeur);*/
 		ft_turkish(stack);
 	}
-	ft_sort_small(stack);
+	if (ft_test_sort(stack) == 1)
+		ft_sort_small(stack);
+	while (ft_maxstack(&(stack->pile_b)) > stack->pile_b->valeur)
+		ft_rrb(stack, 0);
+	ft_print_pile(stack->pile_b);
+	/*while (stack->pile_b != NULL)
+	{
+		ft_pa(stack);
+		while (stack->pile_b != NULL && ft_test_sort(stack) != 1)
+		{
+			if (stack->pile_a->valeur < ft_int_lasta(stack)
+				&& ft_int_lasta(stack) != ft_maxstack(&(stack->pile_a)))
+			{
+				ft_rra(stack, 0);
+				ft_sa(stack, 0);
+			}
+			else if (stack->pile_b->valeur == ft_minstack(&(stack->pile_b)))
+			{
+				ft_pa(stack);
+				while (ft_test_sort(stack) != 1)
+				{
+					ft_rra(stack, 0);
+					ft_sa(stack, 0);
+				}
+			}
+			else
+				ft_pa(stack);
+		}
+	}*/
+	return (0);
+}
+
+/*if (ft_test_sort(stack) == 1)
+		ft_sort_small(stack);
 	while (ft_int_lastb(stack) > stack->pile_b->valeur)
 		ft_rrb(stack, 0);
 	while (stack->pile_b != NULL)
@@ -112,8 +145,7 @@ int	ft_sort_lbig(t_stack *stack)
 				ft_pa(stack);
 		}
 	}
-	return (0);
-}
+}*/
 
 /*
 Trouver le nombre avec le moins de points possible,

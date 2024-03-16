@@ -6,7 +6,7 @@
 /*   By: yalounic <yalounic@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/25 17:03:11 by yalounic          #+#    #+#             */
-/*   Updated: 2024/03/14 21:24:20 by yalounic         ###   ########.fr       */
+/*   Updated: 2024/03/16 13:47:29 by yalounic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,9 +47,7 @@ int	ft_test_sort(t_stack *stack)
 	while (tmp->next != NULL)
 	{
 		if (tmp->valeur > tmp->next->valeur)
-		{
 			return (0);
-		}
 		tmp = tmp->next;
 	}
 	return (1);
@@ -65,9 +63,7 @@ int	ft_minstack(t_pile **stack)
 	while (tmp->next != NULL)
 	{
 		if (tmp_valeur > tmp->next->valeur)
-		{
 			tmp_valeur = tmp->next->valeur;
-		}
 		tmp = tmp->next;
 	}
 	return (tmp_valeur);
@@ -80,7 +76,7 @@ void ft_print_pile(t_pile *pile)
 	tmp = pile;
 	while (tmp != NULL)
 	{
-		printf("%d\n", tmp->valeur);
+		printf("%d , %d\n", tmp->rpos, tmp->valeur);
 		tmp = tmp->next;
 	}
 }
@@ -111,19 +107,20 @@ int	main(int argc, char **argv)
 		push(&(stack->pile_a), ft_atoi(argv[i]));
 		i--;
 	}
-	if (ft_test_sort(stack) == 1)
+	ft_find_rpos(stack, -1, -1);
+	/*if (ft_test_sort(stack) == 1)
 		return (0);
 	else if (argc == 4)
 		ft_sort_small(stack);
 	else if (argc == 6)
 		ft_sort_five(stack);
 	else
-		ft_sort_lbig(stack);
+		ft_sort_lbig(stack);*/
 	/*if (ft_test_sort(stack) == 1)
 		write(1, "OK\n", 3);
 	else
 		write(1, "KO\n", 3);*/
-	//ft_print_pile(stack->pile_a);
+	ft_print_pile(stack->pile_a);
 	free_stack(&(stack->pile_a));
 	free_stack(&(stack->pile_b));
 	free(stack);

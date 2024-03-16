@@ -6,7 +6,7 @@
 /*   By: yalounic <yalounic@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/25 15:43:22 by yalounic          #+#    #+#             */
-/*   Updated: 2024/03/14 17:43:20 by yalounic         ###   ########.fr       */
+/*   Updated: 2024/03/15 22:05:14 by yalounic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ int	ft_tmpbfindpeer(t_stack *stack, int val)
 	return (i);
 }
 
-void	ft_bfindpeer(t_stack *stack, int val)
+/*void	ft_bfindpeer(t_stack *stack, int val)
 {
 	int		i;
 	t_pile	*tmp;
@@ -66,6 +66,50 @@ void	ft_bfindpeer(t_stack *stack, int val)
 		tmp = tmp->next;
 	}
 	return ;
+}*/
+void	ft_bfindpeer(t_stack *stack, int val)
+{
+	int		i;
+	t_pile	*tmp;
+	int		posnode;
+	
+	tmp = stack->pile_b;
+	i = 0;
+	ft_pb(stack);
+	while (tmp->next != NULL)
+	{
+		posnode = ft_pos_nodeb(stack, tmp->valeur);
+		if (tmp->valeur > val && tmp->next->valeur < val)
+		{
+			if (ft_pos_lastb(stack) / 2 >= posnode)
+			{
+				while (stack->pile_b->valeur != val)
+				{
+					ft_rb(stack, 0);
+				}
+				ft_pb(stack);
+				return ;
+			}
+			else if (ft_pos_lastb(stack) / 2 < posnode)
+			{
+				while (stack->pile_b->valeur != val)
+				{
+					ft_rrb(stack, 0);
+				}
+				ft_pb(stack);
+				return ;
+			}
+		}
+		else if (i > ft_pos_last(stack))
+		{
+			ft_pb(stack);
+			return ;
+		}
+		ft_rb(stack, 0);
+		i++;
+		
+		tmp = tmp->next;
+	}
 }
 
 int	ft_int_last(t_pile **stack)
@@ -85,13 +129,11 @@ int	ft_int_last(t_pile **stack)
 
 void	ft_turkish(t_stack *stack)
 {
-	int val;
+	int	val;
 
 	val = stack->pile_a->valeur;
 	ft_bfindpeer(stack, val);
 	/*int	lastpos;
-	int	posnode;
-
 	lastpos = ft_pos_last(stack);
 	posnode = ft_pos_node(stack, val);
 	if (stack->pile_a->valeur == val)
