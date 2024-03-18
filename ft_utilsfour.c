@@ -6,7 +6,7 @@
 /*   By: yalounic <yalounic@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/02 15:11:11 by yalounic          #+#    #+#             */
-/*   Updated: 2024/03/16 13:59:35 by yalounic         ###   ########.fr       */
+/*   Updated: 2024/03/18 21:26:13 by yalounic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,7 +93,6 @@ void	ft_find_rpos(t_stack *stack, int lmin, int rpos)
 		while (tmp2->valeur != min)
 			tmp2 = tmp2->next;
 		tmp2->rpos = ++rpos;
-		printf("min = %d\n", tmp2->rpos);
 		lmin = min;
 		tmp = stack->pile_a;
 		tmp2 = stack->pile_a;

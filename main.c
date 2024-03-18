@@ -6,7 +6,7 @@
 /*   By: yalounic <yalounic@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/25 17:03:11 by yalounic          #+#    #+#             */
-/*   Updated: 2024/03/16 13:47:29 by yalounic         ###   ########.fr       */
+/*   Updated: 2024/03/18 21:26:39 by yalounic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -108,6 +108,8 @@ int	main(int argc, char **argv)
 		i--;
 	}
 	ft_find_rpos(stack, -1, -1);
+	ft_sortbig(stack);
+	//printf("rpos : %d\n", ft_findlnode(stack, 19));
 	/*if (ft_test_sort(stack) == 1)
 		return (0);
 	else if (argc == 4)
@@ -120,7 +122,7 @@ int	main(int argc, char **argv)
 		write(1, "OK\n", 3);
 	else
 		write(1, "KO\n", 3);*/
-	ft_print_pile(stack->pile_a);
+	//ft_print_pile(stack->pile_a);
 	free_stack(&(stack->pile_a));
 	free_stack(&(stack->pile_b));
 	free(stack);
