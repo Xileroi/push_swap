@@ -6,7 +6,7 @@
 /*   By: yalounic <yalounic@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/01 17:44:51 by yalounic          #+#    #+#             */
-/*   Updated: 2024/03/15 22:04:06 by yalounic         ###   ########.fr       */
+/*   Updated: 2024/03/19 22:18:41 by yalounic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,32 +42,6 @@ int	ft_intmin(t_stack *stack)
 		tmp = tmp->next;
 	}
 	return (min);
-}
-
-void	ft_pushmix(t_stack *stack)
-{
-	if (ft_pos_last(stack) / 2 >= ft_pos_node(stack, ft_intmax(stack)))
-	{
-		while (stack->pile_a->valeur != ft_intmax(stack))
-			ft_ra(stack, 0);
-	}
-	else if (ft_pos_last(stack) / 2 < ft_pos_node(stack, ft_intmax(stack)))
-	{
-		while (stack->pile_a->valeur != ft_intmax(stack))
-			ft_rra(stack, 0);
-	}
-	ft_pb(stack);
-	if (ft_pos_last(stack) / 2 >= ft_pos_node(stack, ft_intmin(stack)))
-	{
-		while (stack->pile_a->valeur != ft_intmin(stack))
-			ft_ra(stack, 0);
-	}
-	else if (ft_pos_last(stack) / 2 < ft_pos_node(stack, ft_intmin(stack)))
-	{
-		while (stack->pile_a->valeur != ft_intmin(stack))
-			ft_rra(stack, 0);
-	}
-	ft_pb(stack);
 }
 
 int	ft_maxstack(t_pile **stack)
@@ -111,4 +85,20 @@ void	dell_value(t_pile **stack, int value)
 	del = tmp->next;
 	tmp->next = tmp->next->next;
 	free(del);
+}
+
+int	ft_nparse(t_stack *stack, char **argv)
+{
+	int	i;
+
+	i = 0;
+	while (argv[i])
+		i++;
+	i -= 1;
+	while (i != 0)
+	{
+		push(&(stack->pile_a), ft_atoi(argv[i]));
+		i--;
+	}
+	return (1);
 }

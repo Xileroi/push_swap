@@ -6,7 +6,7 @@
 /*   By: yalounic <yalounic@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/25 18:35:36 by yalounic          #+#    #+#             */
-/*   Updated: 2024/03/02 15:14:03 by yalounic         ###   ########.fr       */
+/*   Updated: 2024/03/19 22:19:51 by yalounic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,4 +60,11 @@ void	ft_ss(t_stack *stack)
 	ft_sa(stack, 1);
 	ft_sb(stack, 1);
 	write(1, "ss\n", 3);
+}
+
+void	ft_error(t_stack *stack)
+{
+	ft_putstr("Error\n");
+	ft_freeall(stack);
+	exit(1);
 }
