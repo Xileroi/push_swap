@@ -6,7 +6,7 @@
 /*   By: yalounic <yalounic@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/25 18:35:42 by yalounic          #+#    #+#             */
-/*   Updated: 2024/03/21 08:31:37 by yalounic         ###   ########.fr       */
+/*   Updated: 2024/03/21 09:41:49 by yalounic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,7 @@ void				ft_sort_five(t_stack *stack);
 int					ft_test_sort(t_stack *stack);
 char				**ft_split(const char *s, char c);
 void				*ft_calloc(size_t nmemb, size_t size);
+char				**ft_freeifbad(int k, char **words);
 int					ft_atoi(const char *str);
 void				ft_fixthis(t_stack *stack);
 int					ft_int_lasta(t_stack *stack);
@@ -80,8 +81,9 @@ void				ft_free_tab(char **tab);
 void				ft_freeall(t_stack *stack);
 int					ft_parse_double(t_stack *stack);
 void				ft_putstr(char *str);
-void				ft_error(t_stack *stack);
-int					alpha_check(char **argv);
+void				ft_error(t_stack *stack, int i);
+int					ft_isalpha(int c);
+int					ft_alpha_check(char **argv, int i);
 size_t				ft_strlen(const char *str);
 int					ft_checkint(char *str);
 void				ft_start(t_stack *stack);

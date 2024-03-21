@@ -6,7 +6,7 @@
 /*   By: yalounic <yalounic@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/07 06:48:00 by yalounic          #+#    #+#             */
-/*   Updated: 2024/03/21 08:30:46 by yalounic         ###   ########.fr       */
+/*   Updated: 2024/03/21 09:36:55 by yalounic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,8 +70,6 @@ char	**ft_split(const char *s, char c)
 
 	size = ft_split_size(s, c);
 	words = (char **)malloc(sizeof(char *) * (size + 1));
-	if (!words)
-		return (NULL);
 	i = 0;
 	k = 0;
 	while (s[i] != '\0')
@@ -82,6 +80,8 @@ char	**ft_split(const char *s, char c)
 		{
 			j = ft_split_search(s + i, c);
 			words[k++] = ft_split_copy(s, i, j);
+			if (ft_checkint(words[k - 1]) == 0)
+				return (ft_freeifbad(k, words));
 			i += j;
 		}
 	}

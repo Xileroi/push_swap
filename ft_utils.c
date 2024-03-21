@@ -6,7 +6,7 @@
 /*   By: yalounic <yalounic@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/07 06:30:04 by yalounic          #+#    #+#             */
-/*   Updated: 2024/03/21 08:18:03 by yalounic         ###   ########.fr       */
+/*   Updated: 2024/03/21 09:06:34 by yalounic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,9 @@
 
 int	ft_atoi(const char *str)
 {
-	long	sign;
-	long	i;
-	long	res;
+	int	sign;
+	int	i;
+	int	res;
 
 	i = 0;
 	res = 0;

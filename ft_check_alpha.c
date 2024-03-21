@@ -6,11 +6,18 @@
 /*   By: yalounic <yalounic@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/19 21:52:31 by yalounic          #+#    #+#             */
-/*   Updated: 2024/03/19 22:15:06 by yalounic         ###   ########.fr       */
+/*   Updated: 2024/03/21 09:44:27 by yalounic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+
+int	ft_isdigit(int c)
+{
+	if (c >= '0' && c <= '9')
+		return (1);
+	return (0);
+}
 
 int	ft_strcmp(char *s1, char *s2)
 {
@@ -57,12 +64,10 @@ int	ft_checkint(char *str)
 	return (1);
 }
 
-int	alpha_check(char **argv)
+int	ft_alpha_check(char **argv, int i)
 {
-	int	i;
 	int	j;
 
-	i = 1;
 	while (argv[i])
 	{
 		j = 0;
@@ -72,6 +77,8 @@ int	alpha_check(char **argv)
 				return (0);
 			j++;
 		}
+		if (ft_strlen(argv[i]) == 1 && ft_isdigit(argv[i][0]) == 0)
+			return (0);
 		if (ft_checkint(argv[i]) == 0)
 			return (0);
 		i++;
