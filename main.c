@@ -6,7 +6,7 @@
 /*   By: yalounic <yalounic@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/25 17:03:11 by yalounic          #+#    #+#             */
-/*   Updated: 2024/03/21 09:15:09 by yalounic         ###   ########.fr       */
+/*   Updated: 2024/03/21 10:19:57 by yalounic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,7 @@ void	push(t_pile **pile, int valeur)
 	newelement = new_pile_element(valeur);
 	if (newelement == NULL)
 		return ;
+	newelement->rpos = 0;
 	newelement->next = *pile;
 	*pile = newelement;
 }
@@ -85,7 +86,7 @@ int	main(int argc, char **argv)
 		ft_nparse(stack, argv);
 	if (ft_parse_double(stack) == 1)
 		ft_error(stack, 1);
-	ft_find_rpos(stack, -1, -1);
+	ft_find_rpos(stack, -1);
 	ft_start(stack);
 	return (0);
 }

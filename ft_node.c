@@ -6,7 +6,7 @@
 /*   By: yalounic <yalounic@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/18 21:05:54 by yalounic          #+#    #+#             */
-/*   Updated: 2024/03/19 22:26:42 by yalounic         ###   ########.fr       */
+/*   Updated: 2024/03/21 10:19:38 by yalounic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,8 +87,11 @@ void	ft_sortbig(t_stack *stack)
 	i = -1;
 	while (stack->pile_a != NULL && ft_sizea(stack) > 1)
 	{
-		while (stack->pile_a->rpos > chunk)
-			ft_ra(stack, 0);
+		if (stack->pile_a->rpos >= chunk)
+		{
+			while (stack->pile_a->rpos >= chunk)
+				ft_ra(stack, 0);
+		}
 		ft_pb(stack);
 		i++;
 		if (i == chunk - 3)

@@ -6,7 +6,7 @@
 /*   By: yalounic <yalounic@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/02 15:11:11 by yalounic          #+#    #+#             */
-/*   Updated: 2024/03/19 20:37:18 by yalounic         ###   ########.fr       */
+/*   Updated: 2024/03/21 10:22:19 by yalounic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,14 +73,16 @@ int	ft_pos_lastb(t_stack *stack)
 	return (i);
 }
 
-void	ft_find_rpos(t_stack *stack, int lmin, int rpos)
+void	ft_find_rpos(t_stack *stack, int lmin)
 {
 	int		min;
+	int		rpos;
 	t_pile	*tmp;
 	t_pile	*tmp2;
 
 	tmp = stack->pile_a;
 	tmp2 = stack->pile_a;
+	rpos = -1;
 	while (rpos < ft_pos_last(stack))
 	{
 		min = ft_maxstack(&(stack->pile_a));

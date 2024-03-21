@@ -6,7 +6,7 @@
 /*   By: yalounic <yalounic@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/19 22:11:55 by yalounic          #+#    #+#             */
-/*   Updated: 2024/03/21 09:44:57 by yalounic         ###   ########.fr       */
+/*   Updated: 2024/03/21 09:56:03 by yalounic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,8 @@ void	ft_start(t_stack *stack)
 		ft_freeall(stack);
 		return ;
 	}
+	else if (ft_sizea(stack) == 2)
+		ft_sa(stack, 0);
 	else if (ft_sizea(stack) == 3)
 		ft_sort_small(stack);
 	else if (ft_sizea(stack) == 5)
