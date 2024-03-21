@@ -6,7 +6,7 @@
 /*   By: yalounic <yalounic@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/19 22:11:55 by yalounic          #+#    #+#             */
-/*   Updated: 2024/03/19 22:27:09 by yalounic         ###   ########.fr       */
+/*   Updated: 2024/03/21 08:08:17 by yalounic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,8 +34,21 @@ void	ft_putstr(char *str)
 	}
 }
 
+void	ft_print(t_stack *stack)
+{
+	t_pile	*tmp;
+
+	tmp = stack->pile_a;
+	while (tmp != NULL)
+	{
+		printf("%d\n", tmp->valeur);
+		tmp = tmp->next;
+	}
+}
+
 void	ft_start(t_stack *stack)
 {
+	ft_print(stack);
 	if (ft_test_sort(stack) == 1)
 	{
 		ft_freeall(stack);
@@ -47,6 +60,7 @@ void	ft_start(t_stack *stack)
 		ft_sort_five(stack);
 	else
 		ft_sortbig(stack);
+	ft_print(stack);
 	ft_freeall(stack);
 }
 

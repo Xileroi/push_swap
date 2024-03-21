@@ -6,7 +6,7 @@
 /*   By: yalounic <yalounic@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/25 17:03:11 by yalounic          #+#    #+#             */
-/*   Updated: 2024/03/19 22:18:20 by yalounic         ###   ########.fr       */
+/*   Updated: 2024/03/21 08:01:52 by yalounic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,8 +79,6 @@ int	main(int argc, char **argv)
 	}
 	stack->pile_a = NULL;
 	stack->pile_b = NULL;
-	if (alpha_check(argv) == 0)
-		ft_error(stack);
 	if (argc == 2)
 		ft_parse(stack, argv[1]);
 	else

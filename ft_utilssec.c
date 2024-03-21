@@ -6,7 +6,7 @@
 /*   By: yalounic <yalounic@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/20 17:00:10 by yalounic          #+#    #+#             */
-/*   Updated: 2024/03/19 22:18:48 by yalounic         ###   ########.fr       */
+/*   Updated: 2024/03/21 08:08:11 by yalounic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,10 +79,18 @@ void	ft_parse(t_stack *stack, char *str)
 
 	tab = ft_split(str, ' ');
 	i = 0;
+	if (alpha_check(tab) == 0)
+	{
+		ft_free_tab(tab);
+		ft_error(stack);
+	}
 	while (tab[i] != NULL)
+		i++;
+	i -= 1;
+	while (i != -1)
 	{
 		push(&stack->pile_a, ft_atoi(tab[i]));
-		i++;
+		i--;
 	}
 	ft_free_tab(tab);
 }

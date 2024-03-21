@@ -6,7 +6,7 @@
 /*   By: yalounic <yalounic@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/01 17:44:51 by yalounic          #+#    #+#             */
-/*   Updated: 2024/03/19 22:18:41 by yalounic         ###   ########.fr       */
+/*   Updated: 2024/03/21 07:55:14 by yalounic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,6 +95,8 @@ int	ft_nparse(t_stack *stack, char **argv)
 	while (argv[i])
 		i++;
 	i -= 1;
+	if (alpha_check(argv) == 0)
+		ft_error(stack);
 	while (i != 0)
 	{
 		push(&(stack->pile_a), ft_atoi(argv[i]));

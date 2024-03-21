@@ -6,106 +6,85 @@
 /*   By: yalounic <yalounic@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/07 06:48:00 by yalounic          #+#    #+#             */
-/*   Updated: 2024/02/07 06:48:12 by yalounic         ###   ########.fr       */
+/*   Updated: 2024/03/21 08:30:46 by yalounic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-static int	ft_count_words(const char *s, char c)
+static int	ft_split_sep(char c, char sep)
 {
-	int	i;
-	int	res;
-
-	i = 0;
-	res = 0;
-	if (s[0] != c && s[0])
-		res++;
-	i++;
-	while (s[i])
-	{
-		while (s[i] && s[i] == c)
-			i++;
-		if (s[i] != c && s[i - 1] == c && s[i] != '\0')
-			res++;
-		if (s[i])
-			i++;
-	}
-	return (res);
+	return (c == sep || c == '\0');
 }
 
-static char	**ini_tab(char **dest, const char *s, char c)
+static int	ft_split_search(const char *s, char c)
 {
-	int	i;
-	int	res;
 	int	j;
 
 	j = 0;
-	i = 0;
-	res = 0;
-	while (s[i])
-	{
-		while (s[i] && s[i] == c)
-			i++;
-		while (s[i] && s[i] != c)
-		{
-			res++;
-			i++;
-			if (s[i] == c || !s[i])
-			{
-				dest[j] = malloc(sizeof(char) * (res + 1));
-				res = 0;
-				j++;
-			}
-		}
-	}
-	dest[j] = NULL;
-	return (dest);
+	while (!ft_split_sep(s[j], c))
+		j++;
+	return (j);
 }
 
-static char	**fil_tab(char **dest, const char *s, char c)
+static int	ft_split_size(const char *s, char c)
 {
+	int	size;
 	int	i;
-	int	res;
-	int	j;
 
-	j = 0;
+	size = 0;
 	i = 0;
-	res = 0;
-	while (s[i])
+	while (s[i] != '\0')
 	{
-		while (s[i] && s[i] == c)
-			i++;
-		while (s[i] != c && s[i])
+		if (!ft_split_sep(s[i], c) && ft_split_sep(s[i + 1], c))
 		{
-			dest[j][res] = s[i];
-			res++;
-			i++;
-			if (s[i] == c || !s[i])
-			{
-				dest[j][res] = '\0';
-				res = 0;
-				j++;
-			}
+			size++;
 		}
+		i++;
 	}
-	return (dest);
+	return (size);
 }
 
-char	**ft_split(char const *s, char c)
+static char	*ft_split_copy(const char *s, int start, int size)
 {
-	char	**dest;
+	char	*word;
+	int		i;
 
-	if (s == NULL || s[0] == '\0')
+	word = (char *)ft_calloc(size + 1, 1);
+	i = 0;
+	while (i < size)
 	{
-		dest = malloc(sizeof(char *) * 1);
-		dest[0] = NULL;
-		return (dest);
+		word[i] = s[start + i];
+		i++;
 	}
-	dest = malloc(sizeof(char *) * (ft_count_words(s, c) + 1));
-	if (!dest)
+	return (word);
+}
+
+char	**ft_split(const char *s, char c)
+{
+	char	**words;
+	int		size;
+	int		i;
+	int		j;
+	int		k;
+
+	size = ft_split_size(s, c);
+	words = (char **)malloc(sizeof(char *) * (size + 1));
+	if (!words)
 		return (NULL);
-	dest = ini_tab(dest, s, c);
-	dest = fil_tab(dest, s, c);
-	return (dest);
+	i = 0;
+	k = 0;
+	while (s[i] != '\0')
+	{
+		if (s[i] == c)
+			i++;
+		else
+		{
+			j = ft_split_search(s + i, c);
+			words[k++] = ft_split_copy(s, i, j);
+			i += j;
+		}
+	}
+	words[size] = NULL;
+	return (words);
 }

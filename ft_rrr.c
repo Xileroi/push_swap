@@ -6,7 +6,7 @@
 /*   By: yalounic <yalounic@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/01 16:03:36 by yalounic          #+#    #+#             */
-/*   Updated: 2024/03/19 21:38:05 by yalounic         ###   ########.fr       */
+/*   Updated: 2024/03/21 07:53:58 by yalounic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,10 +73,6 @@ int	ft_parse_double(t_stack *stack)
 		while (tmp2 != NULL)
 		{
 			if (tmp->valeur == tmp2->valeur)
-				return (1);
-			if (tmp->valeur > 2147483647)
-				return (1);
-			if (tmp->valeur <= -2147483648)
 				return (1);
 			tmp2 = tmp2->next;
 		}

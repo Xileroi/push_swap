@@ -6,7 +6,7 @@
 /*   By: yalounic <yalounic@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/25 18:35:42 by yalounic          #+#    #+#             */
-/*   Updated: 2024/03/19 22:28:21 by yalounic         ###   ########.fr       */
+/*   Updated: 2024/03/21 08:31:37 by yalounic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,7 @@ void				ft_sort_small(t_stack *stack);
 void				ft_sort_five(t_stack *stack);
 int					ft_test_sort(t_stack *stack);
 char				**ft_split(const char *s, char c);
+void				*ft_calloc(size_t nmemb, size_t size);
 int					ft_atoi(const char *str);
 void				ft_fixthis(t_stack *stack);
 int					ft_int_lasta(t_stack *stack);
